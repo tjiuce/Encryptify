@@ -10,6 +10,33 @@ Encryptify is a modern Progressive Web App (PWA) featuring offline capabilities 
 
 **Output Format:** All encrypted outputs are finalized into an alphanumeric Base62 format. This guarantees that your ciphertext will always consist strictly of English letters and numbers without any special characters, ensuring maximum compactness while remaining robust and safe for transmission.
 
+## Cryptographic System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Input & Mode Selection
+        Plaintext[Input Text Message] --> Mode{Select Encryption Mode}
+        KeyInput[Input Key / Roots] --> Mode
+    end
+
+    subgraph Symmetric Engine (Time-based Cycle)
+        Mode -- Symmetric --> SymCycle[Cycle Determination: 1-3 Cycles]
+        SymCycle --> SymTime[Derive Millisecond Time-Shift]
+        SymTime --> Base62Sym[Base62 Encoding Engine]
+    end
+
+    subgraph Asymmetric Engine (Quadratic Polynomial)
+        Mode -- Asymmetric --> AsymQuad[Quadratic Equation Split: a, b, c]
+        AsymQuad --> AsymRoots[Derive Positive Root Keys]
+        AsymRoots --> Base62Asym[Base62 Encoding Engine]
+    end
+
+    subgraph Cipher Output
+        Base62Sym --> Cipher[Base62 Alphanumeric Ciphertext]
+        Base62Asym --> Cipher
+    end
+```
+
 ## Algorithm Versions
 
 Encryptify algorithms may update over time. The application allows you to specify which version of the math you are using to ensure older texts can still be decrypted.
@@ -33,6 +60,20 @@ You can manually pass the following parameters:
 | `a` | `action` | Auto-executes an action immediately on page load. | `e` (encrypt) or `d` (decrypt) |
 
 Example URL: `?pl=Hello&t=s&k=123&v=2&a=e`
+
+## Python CLI Execution
+
+### Running `encryption.py`
+In addition to the web app, Encryptify includes a standalone Python script `encryption.py` for CLI execution.
+
+```bash
+# Clone repository
+git clone https://github.com/multiverseweb/Encryptify.git
+cd Encryptify
+
+# Run Python script
+python encryption.py
+```
 
 ## Encryption Algorithms
 
