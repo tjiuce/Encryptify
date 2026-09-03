@@ -2,7 +2,7 @@
 
 A professional web application for encrypting and decrypting text securely.
 
-![Encryptify Interface](https://github.com/multiverseweb/Encryptify/blob/main/resources/encryptify.png?raw=true)
+![Encryptify Interface](https://github.com/tjiuce/Encryptify/blob/main/resources/encryptify.png?raw=true)
 
 ## Overview
 
@@ -68,7 +68,7 @@ In addition to the web app, Encryptify includes a standalone Python script `encr
 
 ```bash
 # Clone repository
-git clone https://github.com/multiverseweb/Encryptify.git
+git clone https://github.com/tjiuce/Encryptify.git
 cd Encryptify
 
 # Run Python script
@@ -93,7 +93,7 @@ The asymmetric mode leverages quadratic equations to securely shift characters.
 
 ## Usage Instructions
 
-1. Open the [Encryptify Web App](https://multiverseweb.github.io/Encryptify/).
+1. Open the [Encryptify Web App](https://tjiuce.github.io/Encryptify/).
 2. Enter the text you wish to encrypt or decrypt into the main text area.
 3. Select your desired encryption mode (**Symmetric** or **Asymmetric**).
 4. Provide a Key:
