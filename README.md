@@ -14,24 +14,24 @@ Encryptify is a modern Progressive Web App (PWA) featuring offline capabilities 
 
 ```mermaid
 flowchart TD
-    subgraph Input & Mode Selection
+    subgraph input["Input & Mode Selection"]
         Plaintext[Input Text Message] --> Mode{Select Encryption Mode}
         KeyInput[Input Key / Roots] --> Mode
     end
 
-    subgraph Symmetric Engine (Time-based Cycle)
+    subgraph symmetric["Symmetric Engine (Time-based Cycle)"]
         Mode -- Symmetric --> SymCycle[Cycle Determination: 1-3 Cycles]
         SymCycle --> SymTime[Derive Millisecond Time-Shift]
         SymTime --> Base62Sym[Base62 Encoding Engine]
     end
 
-    subgraph Asymmetric Engine (Quadratic Polynomial)
+    subgraph asymmetric["Asymmetric Engine (Quadratic Polynomial)"]
         Mode -- Asymmetric --> AsymQuad[Quadratic Equation Split: a, b, c]
         AsymQuad --> AsymRoots[Derive Positive Root Keys]
         AsymRoots --> Base62Asym[Base62 Encoding Engine]
     end
 
-    subgraph Cipher Output
+    subgraph output["Cipher Output"]
         Base62Sym --> Cipher[Base62 Alphanumeric Ciphertext]
         Base62Asym --> Cipher
     end
